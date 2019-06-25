@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>CarsDealerApp</title>
+</head>
+
+<body>
+  <div class="nav"></div>
+  <!-- <iframe name="redi"></iframe> -->
+  <div class="create-form">
+    <h2 class="create-title">create car</h2>
+    <section>
+      <form action="localhost:1234/api/v1/cars" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="" />
+
+        <label for="description">Description:</label>
+        <input type="text" name="description" id="name" value="" />
+
+        <label for="year">Year:</label>
+        <input type="text" name="year" id="name" />
+
+        <label for="color">Color:</label>
+        <input type="text" name="color" id="name" />
+
+        <!-- <label for="date">Date:</label>
+      <input type="date" name="date" id="name" /> -->
+
+        <input type="submit" class="js-submit">
+      </form>
+    </section>
+
+  </div>
+
+  <div class="create-form">
+    <h2 class="create-title">create brand</h2>
+    <form action="localhost:1234/api/v1/brands" method="post">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+
+      <label for="description">Description:</label>
+      <input type="text" name="description" id="name" />
+
+      <input type="submit" class="js-submit">
+    </form>
+  </div>
+
+  <div class="inventory js-inventory"></div>
+  <script src="js/view.js"></script>
+</body>
+
+</html>

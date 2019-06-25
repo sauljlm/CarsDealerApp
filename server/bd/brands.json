@@ -1,0 +1,42 @@
+[
+  {
+    "id": 571,
+    "name":"toyota",
+    "description":"Su gama de productos y servicios incluye la fabricación, comercialización y mantenimiento de automóviles, camiones, autobuses y robots (no para la venta al público)."
+  },
+  {
+    "id": 572,
+    "name":"hyundai",
+    "description":"es el mayor fabricante surcoreano de automóviles. Su sede principal está en la prefectura de Yangjae-Dong en la ciudad de Seocho-Gu en Seúl. Es el sexto fabricante de automóviles más grande del mundo."
+  },
+  {
+    "id": 578,
+    "name":"nissan",
+    "description":" es un fabricante japonés de automóviles, con base en Ykohama. Su nombre común, Nissan, es un acrónimo de Nippon Sangyo (en japonés significa industria japonesa)."
+  },
+  {
+    "id": 575,
+    "name":"subaru",
+    "description":"es un fabricante de automóviles japonés, y es subsidiaria de la compañía Fuji Heavy Industries (FHI). General Motors fue accionista minoritario con un 20% de esta empresa entre 1999 y 2005, cuando vendieron el 8.7% de sus acciones a Toyota, y el resto lo dejaron al mercado abierto."
+  },
+  {
+    "id": 555,
+    "name":"ford",
+    "description":"Ford introdujo métodos para la fabricación a gran escala de los coches y la gestión a gran escala de una fuerza de trabajo industrial utilizando secuencias de fabricación elaborada por ingeniería tipificados por movimiento de líneas de ensamble."
+  },
+  {
+    "id": 566,
+    "name":"bmw",
+    "description":"es un fabricante alemán de automóviles de gama alta y motocicletas, cuya sede se encuentra en Múnich. Sus subsidiarias son Mini, Rolls-Royce, y BMW Bank. BMW es el líder mundial en ventas entre los fabricantes de gama alta, compite principalmente con Audi, Volvo, Lexus y Mercedes-Benz, entre otros vehículos de gama alta.3​"
+  },
+  {
+    "id": 545,
+    "name":"mercedes",
+    "description":"La marca es reconocida por sus vehículos de lujo, autobuses y camiones. Su eslogan es The best or nothing ."
+  },
+  {
+    "id": 565,
+    "name":"honda",
+    "description":"es una empresa de origen japonés que fabrica automóviles, propulsores para vehículos terrestres, acuáticos y aéreos, motocicletas, robots y componentes para la industria automotriz."
+  }
+]
