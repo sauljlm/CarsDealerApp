@@ -1,7 +1,7 @@
 const brands = require('./bd/brands.json');
 const cars = require('./bd/cars.json');
 
-function GET(req, res, route) {
+function GET(req, res) {
   if(req.url === '/api/v1/brands') {
     router(res, {success: true, data: brands});
   } else if (req.url === '/api/v1/cars') {

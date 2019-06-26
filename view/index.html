@@ -11,35 +11,31 @@
 
 <body>
   <div class="nav"></div>
-  <!-- <iframe name="redi"></iframe> -->
   <div class="create-form">
     <h2 class="create-title">create car</h2>
-    <section>
-      <form action="localhost:1234/api/v1/cars" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="" />
+    <form action="http://localhost:1234/api/v1/cars" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" value="" />
 
-        <label for="description">Description:</label>
-        <input type="text" name="description" id="name" value="" />
+      <label for="description">Description:</label>
+      <input type="text" name="description" id="name" value="" />
 
-        <label for="year">Year:</label>
-        <input type="text" name="year" id="name" />
+      <label for="year">Year:</label>
+      <input type="number" name="year" id="name" />
 
-        <label for="color">Color:</label>
-        <input type="text" name="color" id="name" />
+      <label for="color">Color:</label>
+      <input type="text" name="color" id="name" />
 
-        <!-- <label for="date">Date:</label>
-      <input type="date" name="date" id="name" /> -->
+      <label for="date">Date:</label>
+      <input type="date" name="date" id="name" />
 
-        <input type="submit" class="js-submit">
-      </form>
-    </section>
-
+      <input type="submit" class="js-submit">
+    </form>
   </div>
 
   <div class="create-form">
     <h2 class="create-title">create brand</h2>
-    <form action="localhost:1234/api/v1/brands" method="post">
+    <form action="http://localhost:1234/api/v1/brands" method="post">
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" />
 

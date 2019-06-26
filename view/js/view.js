@@ -50,13 +50,16 @@ function getJson(url, funct) {
       return data.json()
     })
     .then((data) => {
-      console.log(data);
       if (typeof funct === 'function') {
         funct(data);
-      }
+      } 
     });
 }
 
 window.onload = function() {
   getJson('http://localhost:1234/api/v1/cars', renderList);
 };
+
+submit.addEventListener('submit', () => {
+  window.location = "../index.html";
+});
