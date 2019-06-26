@@ -1,5 +1,23 @@
 [
   {
+    "id": 1,
+    "name": "hyundai elantra",
+    "brand": 572,
+    "year": 2017,
+    "color": "black",
+    "description": "Su gama de productos y servicios incluye la fabricación, comercialización y mantenimiento de automóviles, camiones, autobuses y robots (no para la venta al público).",
+    "date": "24-06-2019"
+  },
+  {
+    "id": 2,
+    "name": "honda civic",
+    "brand": 565,
+    "year": 1997,
+    "color": "red",
+    "description": "Su gama de productos y servicios incluye la fabricación, comercialización y mantenimiento de automóviles, camiones, autobuses y robots (no para la venta al público).",
+    "date": "24-06-2019"
+  },
+  {
     "id": 178,
     "name": "toyota corrolla",
     "brand": 571,

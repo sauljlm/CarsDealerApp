@@ -19,7 +19,8 @@ ul {
 
 .btn-add, .btn-inventory {
   padding: 10px;
-  margin: 5px; }
+  margin: 5px 25px;
+  font-size: 1.5rem; }
 
 .inventory-brands {
   position: absolute;

@@ -1,13 +1,23 @@
-const brands = require('./bd/brands.json');
-const cars = require('./bd/cars.json');
+const fs = require('fs');
+let cars = require('./bd/cars.json');
 
 function DELETE(req, res) {
-  if(req.url === '/api/v1/brands') {
-    router(res, {success: true, data: brands});
-  } else if (req.url === '/api/v1/cars') {
-    router(res, {success: true, data: cars});
+  if(req.url.indexOf('/api/v1/cars') > -1) {
+    let id = +req.url.split('cars/')[1];
+    cars.splice(id -1, 1);
+    cars = cars.map((element, index) => {
+      element.id = index + 1;
+      return element;
+    });
+    if(cars[id]) {
+      fs.writeFile('./bd/cars.json', JSON.stringify(cars),
+      err => {if (err) throw new Error(err)});
+      router(res, {success: true, data: cars});
+    } else {
+      router(res, {error: 'no se encontró el Id' , status: 404});
+    }
   } else {
-    res.end(`la ruta ${req.url} no fue encontrada`);
+    router(res, {error: 'not resource found' , status: 404});
   }
 }
 

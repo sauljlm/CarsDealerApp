@@ -4,7 +4,7 @@ const methods = {
     PUT: require('./PUT'),
     POST: require('./POST'),
     GET: require('./GET'),
-    DELITE: require('./DELETE'),
+    DELETE: require('./DELETE'),
 }
 
 function createRutes(req, res) {
