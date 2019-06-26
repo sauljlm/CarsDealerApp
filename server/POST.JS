@@ -1,23 +1,52 @@
 const brands = require('./bd/brands.json');
 const cars = require('./bd/cars.json');
-const qs = require('querystring');
+const querystring = require('querystring');
 const fs = require('fs');
 
-function writeFile(req, res, file, url) {
+function processData(req, res, file, url, type) {
   let data = '';
   req
     .on('data', d => data += d)
     .on('end', () => {
-      data = qs.parse(data);
-      if(data.name && data.year && data.color) {
-        data = addDefaults(data.name, data.year, data.description, data.color, data.date);
-        file.push(data);
-        fs.writeFile(`${url}`, JSON.stringify(file), err => {if(err) throw new Error(err)});
-        res.end(JSON.stringify(data));
-      } else {
-        res.end(`los valores ${res} no son validos`);
-      }
+      data = querystring.parse(data);
+      if (type === 'car') {
+        if(validateCar(data.name, data.year, data.color)) { 
+          data = addDefaults(data.name, data.year, data.description, data.color, data.date);
+          writeData(res, file, url, data);
+        } else {
+          res.end(`los valores ${res} no son validos`);
+        }
+      } else if (type === 'brand') {
+        if(validateBrand(data.name)) {
+          writeData(res, file, url, data);
+        } else {
+          res.end(`los valores ${res} no son validos`);
+        }
+      } 
     });
+}
+
+function writeData(res, file, url, data) {
+  file.push(data);
+  fs.writeFile(`${url}`, JSON.stringify(file), err => {if(err) throw new Error(err)});
+  res.end(JSON.stringify(data));
+}
+
+function validateBrand(name) {
+  if (name) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function validateCar(name, year, color) {
+  console.log(year);
+  if(name && year && color) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function generateID() {
@@ -47,9 +76,9 @@ function addDefaults(name, year, description, color, date) {
 
 function POST(req, res) {
   if(req.url === '/api/v1/brands') {
-    writeFile(req, res, brands, './bd/brands.json');
+    processData(req, res, brands, './bd/brands.json', 'brand');
   } else if (req.url === '/api/v1/cars') {
-    writeFile(req, res, cars, './bd/cars.json');
+    processData(req, res, cars, './bd/cars.json', 'car');
   } else {
     res.end(`la ruta ${req.url} no fue encontrada`);
   }

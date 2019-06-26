@@ -5,15 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <title>CarsDealerApp</title>
 </head>
 
 <body>
-  <div class="nav"></div>
-  <div class="create-form">
-    <h2 class="create-title">create car</h2>
-    <form action="http://localhost:1234/api/v1/cars" method="POST">
+  <div class="js-nav nav"></div>
+  
+  <div class="create-form form-car"> 
+    <form id='form-car' action="http://localhost:1234/api/v1/cars" method="POST">
+      <h2 class="create-title">create car</h2>
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" value="" />
 
@@ -29,13 +31,13 @@
       <label for="date">Date:</label>
       <input type="date" name="date" id="name" />
 
-      <input type="submit" class="js-submit">
+      <input type="submit" id="btn-submit-car" class="js-submit">
     </form>
   </div>
 
-  <div class="create-form">
-    <h2 class="create-title">create brand</h2>
+  <div class="create-form form-brand">
     <form action="http://localhost:1234/api/v1/brands" method="post">
+      <h2 class="create-title">Create brand</h2>
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" />
 
@@ -44,8 +46,14 @@
 
       <input type="submit" class="js-submit">
     </form>
-  </div>
+  </div> 
 
+  <div class="inventory-brands clearfix js-all-brands">
+    <div class="nav">
+      <h3>brands</h3>
+      <button class="btn-add add-brand">add brand</button>
+    </div>
+  </div>
   <div class="inventory js-inventory"></div>
   <script src="js/view.js"></script>
 </body>

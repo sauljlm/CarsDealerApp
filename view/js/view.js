@@ -1,8 +1,36 @@
 const inventory = document.querySelector('.js-inventory');
+const inventoryBrands = document.querySelector('.js-all-brands'); 
 const submit = document.querySelector('.js-submit');
+const nav = document.querySelector('.js-nav');
+const popUpCar = document.querySelector('.form-car');
+const popUpBrand = document.querySelector('.form-brand');
+const btnAddBrand = document.querySelector('.add-brand');
+
+function renderNav() {
+  const button = document.createElement('button');
+  const addCars = document.createElement('button');
+
+  button.setAttribute('class', 'btn-inventory');
+  addCars.setAttribute('class', 'btn-add');
+
+  button.innerHTML = 'Brands';
+  addCars.innerHTML = 'addCar';
+
+  button.addEventListener('click', () => {
+    inventoryBrands.classList.toggle('active');
+  });
+
+  addCars.addEventListener('click', ()=> {
+    popUpCar.classList.toggle('popUp-active');
+  });
+
+  nav.appendChild(button);
+  nav.appendChild(addCars);
+} 
 
 function renderList(data) {
   const list = document.createElement('ul');
+  list.setAttribute('class', 'list-cars');
   data.data.forEach(element => {
     const item = document.createElement('li');
     const name = document.createElement('p');
@@ -24,6 +52,29 @@ function renderList(data) {
     list.appendChild(item);
   });
   inventory.appendChild(list);
+}
+
+function renderListBrands(data) {
+  const list = document.createElement('ul');
+  list.setAttribute('class', 'list-brands');
+  data.data.forEach(element => {
+    const item = document.createElement('li');
+    const name = document.createElement('p');
+    const description = document.createElement('p');
+    
+    item.setAttribute('class', 'item');
+    item.setAttribute('id', `${element.id}`);
+    name.setAttribute('class', 'item__name');
+    description.setAttribute('class', 'item__description');
+
+    name.innerHTML = `${element.name}`;
+    description.innerHTML = `${element.description}`;
+
+    item.appendChild(name);
+    item.appendChild(description);
+    list.appendChild(item);
+  });
+  inventoryBrands.appendChild(list);
 }
 
 function dataCars(item, element) {
@@ -58,8 +109,10 @@ function getJson(url, funct) {
 
 window.onload = function() {
   getJson('http://localhost:1234/api/v1/cars', renderList);
+  getJson('http://localhost:1234/api/v1/brands', renderListBrands);
+  renderNav();
 };
 
-submit.addEventListener('submit', () => {
-  window.location = "../index.html";
+btnAddBrand.addEventListener('click', () => {
+  popUpBrand.classList.toggle('popUp-active');
 });
