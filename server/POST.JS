@@ -41,7 +41,7 @@ function validateBrand(name) {
 }
 
 function validateCar(name, year, color) {
-  console.log(year);
+  //console.log(`year ${year}`);
   if(name && year && color) {
     return true;
   } else {

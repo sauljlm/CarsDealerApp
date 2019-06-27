@@ -10,7 +10,7 @@ const methods = {
 function createRutes(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     if(methods[req.method]) {
-        console.log('request');
+        console.log(req.method);
         methods[req.method](req, res);
     } else {
         res.end(`no se encontró ${res}`);

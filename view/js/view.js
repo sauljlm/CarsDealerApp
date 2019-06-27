@@ -1,10 +1,26 @@
 const inventory = document.querySelector('.js-inventory');
 const inventoryBrands = document.querySelector('.js-all-brands'); 
-const submit = document.querySelector('.js-submit');
 const nav = document.querySelector('.js-nav');
 const popUpCar = document.querySelector('.form-car');
 const popUpBrand = document.querySelector('.form-brand');
 const btnAddBrand = document.querySelector('.add-brand');
+
+const submitCars = document.querySelector('#btn-submit-car');
+const submitBrands = document.querySelector('#btn-submit-brand');
+let dataCar = document.querySelectorAll('.imput-car');
+let dataBrand = document.querySelectorAll('.imput-brand');
+
+function sendForm(data, url) {
+  let params = new URLSearchParams();
+  data.forEach((element, index) => {
+    params.append(element.name, data[index].value);
+  });
+  
+  fetch(`${url}`, {
+    method: 'POST',
+    body: params.toString()
+  })
+}
 
 function renderNav() {
   const button = document.createElement('button');
@@ -31,24 +47,35 @@ function renderNav() {
 function renderList(data) {
   const list = document.createElement('ul');
   list.setAttribute('class', 'list-cars');
-  data.data.forEach(element => {
+  deleteCar = list;
+  data.data.forEach((element, index) => {
     const item = document.createElement('li');
     const name = document.createElement('p');
     const description = document.createElement('p');
+    const btnDelete = document.createElement('button');
     
     item.setAttribute('class', 'item');
-    item.setAttribute('id', `${element.id}`);
+    item.setAttribute('id', `${index + 1}`);
     name.setAttribute('class', 'item__name');
     description.setAttribute('class', 'item__description');
-
+    btnDelete.setAttribute('class', 'delete-car');
+    
     name.innerHTML = `${element.name}`;
     description.innerHTML = `${element.description}`;
+    btnDelete.innerHTML = 'Delete';
 
+    btnDelete.addEventListener('click' , () => {
+      fetch(`http://localhost:1234/api/v1/cars/${index+1}`, {
+        method: 'DELETE'
+      })
+    });
+    
     item.appendChild(name);
-
-    if (element.year) { dataCars(item, element)}
-
+    
+    dataCars(item, element);
+    
     item.appendChild(description);
+    item.appendChild(btnDelete);
     list.appendChild(item);
   });
   inventory.appendChild(list);
@@ -57,21 +84,32 @@ function renderList(data) {
 function renderListBrands(data) {
   const list = document.createElement('ul');
   list.setAttribute('class', 'list-brands');
-  data.data.forEach(element => {
+  deleteBrand = list;
+  data.data.forEach((element, index) => {
     const item = document.createElement('li');
     const name = document.createElement('p');
     const description = document.createElement('p');
+    const btnDelete = document.createElement('button');
     
     item.setAttribute('class', 'item');
-    item.setAttribute('id', `${element.id}`);
+    item.setAttribute('id', `${index + 1}`);
     name.setAttribute('class', 'item__name');
     description.setAttribute('class', 'item__description');
+    btnDelete.setAttribute('class', 'delete-brand');
 
     name.innerHTML = `${element.name}`;
     description.innerHTML = `${element.description}`;
+    btnDelete.innerHTML = 'Delete';
+
+    btnDelete.addEventListener('click' , (index) => {
+      fetch(`http://localhost:1234/api/v1/brands/:${index}`, {
+        method: 'delete'
+      })
+    });
 
     item.appendChild(name);
     item.appendChild(description);
+    item.appendChild(btnDelete);
     list.appendChild(item);
   });
   inventoryBrands.appendChild(list);
@@ -106,6 +144,15 @@ function getJson(url, funct) {
       } 
     });
 }
+
+submitCars.addEventListener('click', (e)=> {
+  e.preventDefault();
+  sendForm(dataCar, 'http://localhost:1234/api/v1/cars');
+});
+submitBrands.addEventListener('click', (e)=> {
+  e.preventDefault();
+  sendForm(dataBrand, 'http://localhost:1234/api/v1/brands')
+});
 
 window.onload = function() {
   getJson('http://localhost:1234/api/v1/cars', renderList);

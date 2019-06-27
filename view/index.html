@@ -14,37 +14,38 @@
   <div class="js-nav nav"></div>
   
   <div class="create-form form-car"> 
-    <form action="http://localhost:1234/api/v1/cars" method="POST">
+    <form action="#"> 
       <h2 class="create-title">create car</h2>
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name" value="" />
+      <input type="text" class="imput-car" name="name" id="name" value="" />
 
       <label for="description">Description:</label>
-      <input type="text" name="description" id="name" value="" />
+      <input type="text" class="imput-car" name="description" id="description" value="" />
 
       <label for="year">Year:</label>
-      <input type="number" name="year" id="name" />
+      <input type="number" class="imput-car" name="year" id="year" />
 
       <label for="color">Color:</label>
-      <input type="text" name="color" id="name" />
+      <input type="text" class="imput-car" name="color" id="color" />
 
       <label for="date">Date:</label>
-      <input type="date" name="date" id="name" />
+      <input type="date" class="imput-car" name="date" id="date" />
 
-      <input type="submit" id="btn-submit-car" class="js-submit">
+      <input type="submit" id="btn-submit-car">
+      
     </form>
   </div>
 
   <div class="create-form form-brand">
-    <form action="http://localhost:1234/api/v1/brands" method="post">
+    <form action="#">
       <h2 class="create-title">Create brand</h2>
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name" />
+      <input type="text" class="imput-brand" name="name" id="name" />
 
       <label for="description">Description:</label>
-      <input type="text" name="description" id="name" />
+      <input type="text" class="imput-brand" name="description" id="name" />
 
-      <input type="submit" class="js-submit">
+      <input type="submit" id="btn-submit-brand">
     </form>
   </div> 
 
