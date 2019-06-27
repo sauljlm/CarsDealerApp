@@ -68,6 +68,7 @@ function renderList(data) {
       fetch(`http://localhost:1234/api/v1/cars/${index+1}`, {
         method: 'DELETE'
       })
+      document.location.reload();
     });
     
     item.appendChild(name);
@@ -89,27 +90,17 @@ function renderListBrands(data) {
     const item = document.createElement('li');
     const name = document.createElement('p');
     const description = document.createElement('p');
-    const btnDelete = document.createElement('button');
     
     item.setAttribute('class', 'item');
     item.setAttribute('id', `${index + 1}`);
     name.setAttribute('class', 'item__name');
     description.setAttribute('class', 'item__description');
-    btnDelete.setAttribute('class', 'delete-brand');
 
     name.innerHTML = `${element.name}`;
     description.innerHTML = `${element.description}`;
-    btnDelete.innerHTML = 'Delete';
-
-    btnDelete.addEventListener('click' , (index) => {
-      fetch(`http://localhost:1234/api/v1/brands/:${index}`, {
-        method: 'delete'
-      })
-    });
 
     item.appendChild(name);
     item.appendChild(description);
-    item.appendChild(btnDelete);
     list.appendChild(item);
   });
   inventoryBrands.appendChild(list);

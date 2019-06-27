@@ -9,6 +9,7 @@ const methods = {
 
 function createRutes(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'DELETE');
     if(methods[req.method]) {
         console.log(req.method);
         methods[req.method](req, res);
